@@ -5,4 +5,8 @@ const getAll = () => {
 	return axios.get(baseURL).then((response) => response.data);
 };
 
-export default { getAll };
+const post = (info) => {
+	return axios.post(baseURL, info).then((response) => response.data);
+};
+
+export default { getAll, post };
