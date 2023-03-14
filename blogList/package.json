@@ -1,34 +1,34 @@
 {
-  
-  "name": "fullstackopen-part4",
-  "version": "1.0.0",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon app.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/CastillejaCode/fullstackopen-part4.git"
-  },
-  "author": "Julian Krzysiak",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/CastillejaCode/fullstackopen-part4/issues"
-  },
-  "homepage": "https://github.com/CastillejaCode/fullstackopen-part4#readme",
-  "description": "",
-  "devDependencies": {
-    "eslint": "^8.36.0",
-    "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-config-prettier": "^8.7.0",
-    "eslint-plugin-import": "^2.27.5",
-    "nodemon": "^2.0.21"
-  },
-  "dependencies": {
-    "cors": "^2.8.5",
-    "dotenv": "^16.0.3",
-    "express": "^4.18.2",
-    "mongoose": "^7.0.1"
-  }
+	"name": "fullstackopen-part4",
+	"version": "1.0.0",
+	"main": "app.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"dev": "nodemon app.js",
+		"build": "rm -rf dist && cd ../frontend/ && npm run build && cp -r dist ../blogList"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/CastillejaCode/fullstackopen-part4.git"
+	},
+	"author": "Julian Krzysiak",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/CastillejaCode/fullstackopen-part4/issues"
+	},
+	"homepage": "https://github.com/CastillejaCode/fullstackopen-part4#readme",
+	"description": "",
+	"devDependencies": {
+		"eslint": "^8.36.0",
+		"eslint-config-airbnb-base": "^15.0.0",
+		"eslint-config-prettier": "^8.7.0",
+		"eslint-plugin-import": "^2.27.5",
+		"nodemon": "^2.0.21"
+	},
+	"dependencies": {
+		"cors": "^2.8.5",
+		"dotenv": "^16.0.3",
+		"express": "^4.18.2",
+		"mongoose": "^7.0.1"
+	}
 }
