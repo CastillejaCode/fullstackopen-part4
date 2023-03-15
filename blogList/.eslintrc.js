@@ -3,6 +3,7 @@ module.exports = {
 		browser: true,
 		commonjs: true,
 		es2021: true,
+		jest: true,
 	},
 	extends: ['airbnb-base', 'prettier'],
 	overrides: [],
@@ -14,5 +15,7 @@ module.exports = {
 		'no-underscore-dangle': 0,
 		'no-param-reassign': 0,
 		'prefer-destructuring': 0,
+		'consistent-return': 0,
+		'no-restricted-syntax': 0,
 	},
 };
