@@ -28,10 +28,23 @@ function App() {
 		setLikes('');
 	};
 
+	const deleteBlog = (id) => {
+		if (!window.confirm('Are you sure you want to delete that?')) return;
+		else {
+			backend
+				.remove(id)
+				.then((response) => setBlogs(blogs.filter((blog) => blog.id !== id)))
+				.catch((error) => console.log(error));
+		}
+	};
+
 	return (
 		<div>
 			<h1>Julian's Blog</h1>
-			<List blogs={blogs} />
+			<List
+				blogs={blogs}
+				handleDelete={deleteBlog}
+			/>
 			<h2>Add Blog</h2>
 			<Form
 				handleSubmit={addBlog}
