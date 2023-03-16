@@ -10,17 +10,34 @@ const Delete = ({ handleDelete, id }) => {
 	);
 };
 
-const List = ({ blogs, handleDelete }) => {
+const Edit = ({ handleEdit, id }) => {
+	return (
+		<div>
+			<button
+				className='edit'
+				onClick={() => handleEdit(id)}>
+				Edit
+			</button>
+		</div>
+	);
+};
+
+const List = ({ blogs, handleDelete, handleEdit }) => {
 	return (
 		<ul>
 			{blogs.map((blog) => (
 				<li key={blog.id}>
-					<h2 style={{ margin: '0' }}>{blog.title}</h2> <br /> Author: {blog.author} <br /> Link: {blog.url} <br />{' '}
-					Likes: {blog.likes}
-					<Delete
-						handleDelete={handleDelete}
-						id={blog.id}
-					/>
+					<h2>{blog.title}</h2> Author: {blog.author} <br /> Link: {blog.url} <br /> Likes: {blog.likes}
+					<div className="buttons">
+						<Delete
+							handleDelete={handleDelete}
+							id={blog.id}
+						/>
+						<Edit
+							handleEdit={handleEdit}
+							id={blog.id}
+						/>
+					</div>
 				</li>
 			))}
 		</ul>

@@ -38,12 +38,21 @@ function App() {
 		}
 	};
 
+	const editBlog = (id) => {
+		const answer = Number(prompt('How many likes would you like to change to?'));
+		const blog = blogs.find((n) => n.id === id);
+		const newBlog = { ...blog, likes: answer };
+
+		backend.update(id, newBlog).then((response) => setBlogs(blogs.map((blog) => (blog.id === id ? response : blog))));
+	};
+
 	return (
 		<div>
 			<h1>Julian's Blog</h1>
 			<List
 				blogs={blogs}
 				handleDelete={deleteBlog}
+				handleEdit={editBlog}
 			/>
 			<h2>Add Blog</h2>
 			<Form

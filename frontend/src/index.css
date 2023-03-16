@@ -80,3 +80,17 @@ form {
 	display: flex;
 	flex-direction: column;
 }
+
+h2 {
+	margin: 0;
+}
+
+.buttons {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 1rem;
+}
+
+button {
+	background-color: lightgray;
+}

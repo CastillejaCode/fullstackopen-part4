@@ -104,6 +104,28 @@ describe('DELETE', () => {
 	});
 });
 
+describe('PUT', () => {
+	test('update a blog', async () => {
+		const initialBlogs = await helper.blogsInDB();
+		const blogToUpdate = initialBlogs[0];
+
+		const newBlog = {
+			title: 'Good job with the PUT',
+			author: 'cats',
+			url: 'stuff',
+			likes: 123,
+		};
+
+		await api.put(`/api/blogs/${blogToUpdate.id}`).send(newBlog);
+		expect(204);
+
+		const laterBlogs = await helper.blogsInDB();
+		expect(laterBlogs).toHaveLength(helper.initialBlogs.length);
+		const contents = laterBlogs.map((blog) => blog.title);
+		expect(contents).toContain('Good job with the PUT');
+	});
+});
+
 afterAll(async () => {
 	await mongoose.connection.close();
 });
