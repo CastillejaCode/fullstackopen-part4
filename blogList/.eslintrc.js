@@ -17,5 +17,6 @@ module.exports = {
 		'prefer-destructuring': 0,
 		'consistent-return': 0,
 		'no-restricted-syntax': 0,
+		'import/no-extraneous-dependencies': 0,
 	},
 };
