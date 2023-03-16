@@ -6,15 +6,18 @@ blogsRouter.get('/', async (request, response) => {
 	response.json(blogs);
 });
 
-blogsRouter.post('/', (request, response, next) => {
-	const blog = new Blog(request.body);
+blogsRouter.post('/', async (request, response) => {
+	if (!request.body.title || !request.body.author) response.status(400).end();
 
-	blog
-		.save()
-		.then((result) => {
-			response.status(201).json(result);
-		})
-		.catch((error) => next(error));
+	if (!request.body.likes) request.body.likes = 0;
+	const blog = new Blog(request.body);
+	const savedBlog = await blog.save();
+	response.status(201).json(savedBlog);
+});
+
+blogsRouter.delete('/:id', async (request, response) => {
+	await Blog.findByIdAndRemove(request.params.id);
+	response.status(204).end();
 });
 
 module.exports = blogsRouter;
