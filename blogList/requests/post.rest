@@ -2,8 +2,9 @@ POST http://localhost:3003/api/blogs
 Content-Type: application/json
 
 {
-    "title": "Cats are amazing",
+    "title": "Test",
     "author": "Peanut", 
     "url": "catbeans.com",
-    "likes": 20
+    "likes": 20,
+    "userId": "641547a6b9bad6d4b64e91af"
 }
