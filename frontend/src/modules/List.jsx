@@ -15,7 +15,9 @@ const Edit = ({ handleEdit, id }) => {
 		<div>
 			<button
 				className='edit'
-				onClick={() => handleEdit(id)}>
+				onClick={() => {
+					handleEdit(id);
+				}}>
 				Edit
 			</button>
 		</div>
@@ -28,7 +30,7 @@ const List = ({ blogs, handleDelete, handleEdit }) => {
 			{blogs.map((blog) => (
 				<li key={blog.id}>
 					<h2>{blog.title}</h2> Author: {blog.author} <br /> Link: {blog.url} <br /> Likes: {blog.likes}
-					<div className="buttons">
+					<div className='buttons'>
 						<Delete
 							handleDelete={handleDelete}
 							id={blog.id}

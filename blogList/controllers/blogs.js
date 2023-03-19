@@ -1,26 +1,23 @@
 const blogsRouter = require('express').Router();
+const jwt = require('jsonwebtoken');
 const Blog = require('../models/blog');
 const User = require('../models/user');
-const jwt = require('jsonwebtoken');
 
 blogsRouter.get('/', async (request, response) => {
 	const blogs = await Blog.find({}).populate('user', { username: 1 });
 	response.json(blogs);
 });
 
-const getTokenFrom = (request) => {
-	const authorization = request.get('authorization');
-	if (authorization && authorization.startsWith('bearer')) {
-		return authorization.replace('bearer', '');
-	}
-	return null;
-};
+blogsRouter.get('/:id', async (request, response) => {
+	const blog = await Blog.findById(request.params.id).populate('user', { username: 1 });
+	response.json(blog);
+});
 
 blogsRouter.post('/', async (request, response) => {
 	if (!request.body.title || !request.body.author) response.status(400).end();
 	if (!request.body.likes) request.body.likes = 0;
 
-	const decodedToken = jwt.verify(getTokenFrom(request), process.env.SECRET);
+	const decodedToken = jwt.verify(request.token, process.env.SECRET);
 	if (!decodedToken.id) {
 		return response.status(401).json({ error: 'invalid token' });
 	}
@@ -41,8 +38,8 @@ blogsRouter.delete('/:id', async (request, response) => {
 });
 
 blogsRouter.put('/:id', async (request, response) => {
-	const blog = request.body;
-	const updatedBlog = await Blog.findByIdAndUpdate(request.params.id, blog, { new: true });
+	// const blog = request.body;
+	const updatedBlog = await Blog.findByIdAndUpdate(request.params.id, request.body, { new: true });
 	response.status(200).json(updatedBlog);
 });
 

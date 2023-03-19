@@ -41,7 +41,8 @@ function App() {
 	const editBlog = (id) => {
 		const answer = Number(prompt('How many likes would you like to change to?'));
 		const blog = blogs.find((n) => n.id === id);
-		const newBlog = { ...blog, likes: answer };
+		const newBlog = { title: blog.title, author: blog.author, url: blog.url, likes: answer };
+		console.log(newBlog);
 
 		backend.update(id, newBlog).then((response) => setBlogs(blogs.map((blog) => (blog.id === id ? response : blog))));
 	};

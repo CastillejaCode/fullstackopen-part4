@@ -1,10 +1,10 @@
 POST http://localhost:3003/api/blogs 
 Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkNhdCBIYXZlciIsImlkIjoiNjQxNTQ3YTZiOWJhZDZkNGI2NGU5MWFmIiwiaWF0IjoxNjc5MTk3NDMwfQ.uGvagVXm6P2QXO2ofVK30QrIxJL2tJgDhqunSlrBAz8
 
 {
-    "title": "Test",
+    "title": "Another Test, Another Test",
     "author": "Peanut", 
     "url": "catbeans.com",
-    "likes": 20,
-    "userId": "641547a6b9bad6d4b64e91af"
+    "likes": 20
 }
