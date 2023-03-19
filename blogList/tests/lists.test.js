@@ -1,4 +1,4 @@
-const { dummy, likes, favorite, mostBlogs } = require('../utils/list_helper');
+const { dummy, likes, favorite, mostBlogs, mostLikes } = require('../utils/list_helper');
 
 test('return 1', () => {
 	expect(dummy([])).toBe(1);
@@ -98,6 +98,15 @@ describe('mostBlogs', () => {
 		expect(mostBlogs(blogs)).toEqual({
 			author: 'Robert C. Martin',
 			blogs: 3,
+		});
+	});
+});
+
+describe('mostLikes', () => {
+	test('who received the most blogs', () => {
+		expect(mostLikes(blogs)).toEqual({
+			author: 'Edsger W. Dijkstra',
+			likes: 17,
 		});
 	});
 });
